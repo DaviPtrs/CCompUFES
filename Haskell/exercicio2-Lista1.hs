@@ -1,3 +1,12 @@
+--a)Cédulas
+ced x = div x 500 +
+        div (mod x 500) 100 +
+        div (mod x 100) 50 +
+        div (mod x 50) 20 +
+        div ((mod x 50)-20*(div (mod x 50) 20)) 10 +
+        div (mod x 10) 5 +
+        mod x 5
+
 --b)Área do retângulo
 arrt x y = x*y 
 
