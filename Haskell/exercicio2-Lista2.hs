@@ -29,7 +29,7 @@ triang a b c    | (a<(b+c)) && (b<(a+c)) && (c<(a+b)) = putStrLn "As medidas POD
 pertriang [x,y] [ex,ey] [dx,dy] = (chkP x ex dx) && (chkP y dy ey)
 
 --Pertinência Losângulo 
-pertlosang [xe,ye] [xs,ys] [xp,yp] = yp <= (ynox [xe,ye] [xs,ys]) && (yp >= (ynox [xe,ye] [xs,(ys-2*ye)])) && (yp <= (ynox [(xe+2*xs),ye] [xs,ys])) && yp >= ynox [xe,ye] [xs,(ys-2*ye)]    
+
 
 --Pertinência Círculo
 pertcirc r [xc,yc] [xp,yp] = chkP (disteu [xc,yc] [xp,yp]) 0 r
