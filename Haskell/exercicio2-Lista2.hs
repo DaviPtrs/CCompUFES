@@ -4,8 +4,7 @@ div3 x = (mod x 3)==0 --Verifica se X é divisível por 3
 chkaP x a b = (x>a) && (x<b) --Verifica se o valor P está no intervalo aberto de A e B
 chkP x a b = (x>=a) && (x<=b) --Verifica se o valor P está no intervalo fechado de A e B
 disteu [xa,ya] [xb,yb] = sqrt(xb - xa)^2 + (yb-ya)^2 --Distância entre 2 pontos no ponto
-mreta [x1,y1] [x2,y2] = (y2-y1)/(x2-x1) --Ângulo da reta
-ynox [x1,y1] [x2,y2] = (mreta [x1,y1] [x2,y2])*(x2-x1)+y1
+ynop [x,y] [xe,ye] [xs,ys] = ((ys-ye)/(xs-xe))*(x-xe)+ye --Tira o y de um ponto em relação a uma reta
 -------------------------------------------------------------------------------------------
 
 --A)Verificar se um número pertence ao intervalo (0,100) e é divisível por 3 e por 5
@@ -22,16 +21,21 @@ diasproj di mi ai df mf af = if (mi==mf) && (ai==af) then
                                 ansdias ano = ano*360
 
 --D)Analisa se 3 medidas dadas formam um triângulo ou não
-triang a b c    | (a<(b+c)) && (b<(a+c)) && (c<(a+b)) = putStrLn "As medidas PODEM formar um triângulo!"
-                | otherwise = putStrLn "As medidas NÃO podem formar um triângulo!"
+triang a b c | (a<(b+c)) && (b<(a+c)) && (c<(a+b)) = putStrLn "As medidas PODEM formar um triângulo!"
+             | otherwise = putStrLn "As medidas NÃO podem formar um triângulo!"
 
 --E)
---Pertinência retângulo
+--Pertinência Retângulo
 pertRet [x,y] [ex,ey] [dx,dy] = (chkP x ex dx) && (chkP y dy ey)
 
 --Pertinência Losângulo
-
-
+pertlosang [x,y] [xe,ye] [xs,ys] = (y <= retaES) && (y >= retaESi) && (y <= retaEiS) && (y >= retaEiSi)
+                                where
+                                    pontoP = [x,y]
+                                    retaES =  ynop pontoP [xe,ye] [xs,ys]
+                                    retaESi = ynop pontoP [xe,ye] [xs,(ys-2*ys)]
+                                    retaEiS = ynop pontoP [(xe-2*xe),ye] [xs,ys]
+                                    retaEiSi = (ynop pontoP [(xe-2*xe),ye] [xs,(ys-2*ys)])
 --Pertinência Círculo
 pertcirc r [xc,yc] [xp,yp] = chkP (disteu [xc,yc] [xp,yp]) 0 r
 
