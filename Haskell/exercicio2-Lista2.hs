@@ -68,7 +68,7 @@ relaNum a b c | igualn3 a b c = putStrLn "Os três são iguais!"
                                 chkQ3 [ex,ey,dx,dy] | ((ex <= 0) && (ey <= 0)) || ((dx >= 0) && (dy >= 0)) = True
                                                     | otherwise = False
                                 chkQ4 [ex,ey,dx,dy] | ((ex >= 0) && (ey <= 0)) || ((dx >= 0) && (dy >= 0)) = True
-                                                    | otherwise = False--}
+                                                    | otherwise = False-- }
         
         
 
