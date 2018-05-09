@@ -50,7 +50,7 @@ relaNum a b c | igualn3 a b c = putStrLn "Os três são iguais!"
                     igual2a2 a b c = (a==b) && (not(b==c))
                     
 --G) Pertinência do retângulo no plano
-{--pertRetPlan [ex,ey] [dx,dy] | Chk1Q [ex,ey,dx,dy] || Chk2Q [ex,ey,dx,dy] || Chk3Q [ex,ey,dx,dy] || Chk4Q [ex,ey,dx,dy] = 1
+pertRetPlan [ex,ey] [dx,dy] | Chk1Q [ex,ey,dx,dy] || Chk2Q [ex,ey,dx,dy] || Chk3Q [ex,ey,dx,dy] || Chk4Q [ex,ey,dx,dy] = 1
                             | 
                             where
                                 chk1Q [ex,ey,dx,dy] = ChkQ1 [ex,ey,dx,dy] && not(chkQ234 [ex,ey,dx,dy]) 
@@ -68,7 +68,7 @@ relaNum a b c | igualn3 a b c = putStrLn "Os três são iguais!"
                                 chkQ3 [ex,ey,dx,dy] | ((ex <= 0) && (ey <= 0)) || ((dx >= 0) && (dy >= 0)) = True
                                                     | otherwise = False
                                 chkQ4 [ex,ey,dx,dy] | ((ex >= 0) && (ey <= 0)) || ((dx >= 0) && (dy >= 0)) = True
-                                                    | otherwise = False--}
+                                                    | otherwise = False
         
         
 
