@@ -4,6 +4,14 @@ bissexto ano = if (mod ano 4 == 0) && (mod ano 100 /= 0) || (mod ano 400 == 0) t
                 else
                     False
 
+menorXS xs | length xs == 1 = xs
+           | head xs <= last xs = menorXS (init xs)
+           | otherwise = menorXS (tail xs) 
+
+maiorXS xs | length xs == 1 = xs
+           | head xs >= last xs = maiorXS (init xs)
+           | otherwise = maiorXS (tail xs) 
+
 {--Exercício 1: Teste as seguintes funções e comente o seu comportamento.
 a)--}
 foo0 = compare 2 (mod 17 2) == EQ  
@@ -76,3 +84,26 @@ da lista no interpretador:--}
 --se dado f 5 2 10 então [5,7,9]
 --Portanto, x é o início, r a razão e t o término.
 
+--III
+
+--A) Menor valor de uma lista
+menorVXS xs = head (menorXS xs)
+
+--B) Dupla com o maior e menor valor de uma lista
+maior_menorXS::[Integer]->(Integer,Integer)
+maior_menorXS xs = (head (menorXS xs),head (maiorXS xs))
+
+--C) Multiplos de um número até um limite
+multiNum num lim = [num,num+num..lim]
+
+--D) Dividir lista no meio
+divideLista xs = if length xs ==0 then
+                    ([],[])
+                  else (take meio xs,drop meio xs)
+                    where
+                        meio = div (length xs) 2
+--E) Duplicar itens de uma lista
+duplicaLista xs = [xs!!(div n 2) | n <- [0..2*(length xs)-1]]
+
+--F) união de duas listas
+uniaoXYS xs ys = xs ++ ys
