@@ -97,13 +97,25 @@ maior_menorXS xs = (head (menorXS xs),head (maiorXS xs))
 multiNum num lim = [num,num+num..lim]
 
 --D) Dividir lista no meio
-divideLista xs = if length xs ==0 then
-                    ([],[])
-                  else (take meio xs,drop meio xs)
-                    where
-                        meio = div (length xs) 2
+divideLista xs = 
+        if length xs ==0 then
+            ([],[])
+        else (take meio xs,drop meio xs)
+    where
+        meio = div (length xs) 2
 --E) Duplicar itens de uma lista
 duplicaLista xs = [xs!!(div n 2) | n <- [0..2*(length xs)-1]]
 
 --F) união de duas listas
 uniaoXYS xs ys = xs ++ ys
+
+--H) Distância de hamming
+distHam n1 n2 = 
+        length difDig
+    where
+        --Preenche uma lista com um item aleatório quando dígitos, em uma mesma 
+        --posição de cada inteiro, são diferentes.
+        difDig = [False | i<-[0..(length int2)-1], int1!!i /= int2!!i]
+        int1 = show(n1)
+        int2 = show(n2)
+
