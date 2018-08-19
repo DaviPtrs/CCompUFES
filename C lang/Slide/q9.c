@@ -14,7 +14,7 @@ void main() {
     printf("Digite o código e a quantidade do item: ");
     scanf("%d %d", &id, &qtd);
 
-    
+
     switch (id)
     {
         case 1:
