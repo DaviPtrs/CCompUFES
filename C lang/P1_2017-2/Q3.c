@@ -10,6 +10,7 @@ void main(){
     while (1){
         n3 = n1+n2;
         soma += n3;
+        
         if (soma > lim){
             soma -= n2;
             printf("%d ",n3);
@@ -20,9 +21,10 @@ void main(){
         } else {
             if (n1!=n2) printf("%d ",n2);
         }
+
         n1 = n2;
         n2 = n3;
-        
-    }
+        }
     printf("\nSoma dos termos: %d\n",soma);
+
 }
