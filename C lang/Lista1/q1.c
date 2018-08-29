@@ -4,8 +4,7 @@
 #define ALC 2.83
 #define GASO 3.15
 
-void main()
-{
+void main(){
     float valorPgto, qtdLitros;
     int tipoComb;
 

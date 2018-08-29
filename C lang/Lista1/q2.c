@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main()
-{
+void main(){
     float mensalidade = 0;
     int idade, qtdDoenca = 0; 
 

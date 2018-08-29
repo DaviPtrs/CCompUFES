@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main()
-{
+void main(){
     int numA, numN, soma;
 
     printf("Digite um valor de início [A] e um valor N de números: ");
@@ -15,7 +14,10 @@ void main()
 
     soma = numA;
     for (int c = 1; c<numN ; c++){
-        soma += 1;
-        printf("%d",soma); // Não finalizado até aqui
+        numA++;
+        soma += numA;
     }
+
+    printf("Soma: %d\n", soma);
+
 }
