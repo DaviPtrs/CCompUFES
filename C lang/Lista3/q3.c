@@ -2,36 +2,44 @@
 #include <stdlib.h>
 
 void main(){
-    int n1, n2, calculos = 0;
-    char newDt;
-    float res;
+    int codOp; 
+    float valor, saldo = 0;
+    puts("=-=-=-=-=-=-=-=");
+    puts("[1] DEPÓSITO");
+    puts("[2] RETIRADA");
+    puts("[3] SAIR");
+    puts("=-=-=-=-=-=-=-=");
+
+    puts("\nDigite o código da operação, seguido do valor");
+    printf("Ex: 1 500 (DEPOSITAR 500)");
+    puts(" ");
 
     while (1){
+        printf("> ");
+        scanf("%d %f", &codOp, &valor);
 
-    printf("Digite dois valores: ");
-    scanf("%d %d", &n1, &n2);
-    
-    while (n2 == 0){
-        printf("Valor inválido! Digite novamente: ");
-        scanf("%d", &n2);
+        if (codOp == 3){
+            break;
+        }
+
+        switch (codOp){
+            case 1:
+                saldo += valor;
+                break;
+            case 2:
+                saldo -= valor;
+                break;
+            default:
+                printf("\nCódigo de operação inválido. Tente novamente!\n");
+        }
+        puts(" ");
     }
-
-    res = ((float)n1) / ((float)n2);
-    calculos ++;
-    printf("A divisão de %d por %d vale: %.2f\n\n",n1,n2,res);
-
-    while (1){
-        printf("DESEJA REALIZAR OUTRO CÁLCULO? (S/N) >> ");
-        scanf(" %c", &newDt);
-        newDt = toupper(newDt);
-        if ((newDt == 'S') || (newDt == 'N')) break;
-    }
-
-    if (newDt == 'S')
-        continue;
+    printf("\nSaldo bancário: R$ %.2f --> ", saldo);
+    if (saldo > 0)
+        printf("CONTA POSITIVA\n");
+    else if (saldo == 0)
+        printf("CONTA ZERADA\n");
     else
-        break;
-    }
-
-    printf("Foram realizados %d cálculo(s)!\n", calculos);
+        printf("CONTA ESTOURADA\n");
+    
 }
