@@ -1,3 +1,7 @@
+;TRABALHO DE ASPECTOS TEÓRICOS DA COMPUTAÇÃO 2;
+;Grupo: Davi Petris, Luana Costa, Ana Carolina Vervloet, Jairo Marcos;
+;Calculador de MDC -> Algoritmo de Euclides;
+
 ;Verifica se x=0
 
 0 _ _ r 0
