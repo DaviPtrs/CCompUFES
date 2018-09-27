@@ -1,0 +1,104 @@
+;TRABALHO DE ASPECTOS TEÓRICOS DA COMPUTAÇÃO 2;
+;Grupo: Davi Petris, Luana Costa, Ana Carolina Vervloet, Jairo Marcos;
+;Calculador de MDC -> Algoritmo de Euclides;
+
+;Verifica se x=0
+
+0 _ _ r 0
+0 1 1 * halt-accept
+0 0 0 r yN
+
+;Verifica se y=0
+
+yN _ _ l halt-accept
+yN 0 0 r yN
+yN 1 1 * marcay
+
+
+;marcax e marcay marcam para contar quem é maior entre os números
+
+marcay 1 ¹ l marcax
+marcay ¹ ¹ r marcay
+marcay ⁰ ⁰ r marcay
+marcay _ _ l dmk
+
+marcax 1 1 l marcax
+marcax ¹ ¹ l marcax
+marcax 0 ⁰ r marcay
+marcax ⁰ ⁰ l marcax
+marcax _ _ r trocaini
+
+;troca os números caso x<y
+
+trocaini ⁰ _ r trocaida
+trocaini ¹ ¹ * trocavolta
+
+trocaida ⁰ ⁰ r trocaida
+trocaida ¹ ¹ r trocaida
+trocaida _ ⁰ l trocavolta
+trocaida 1 1 r trocaida
+
+trocavolta ¹ ¹ l trocavolta2
+trocavolta ⁰ ⁰ l trocavolta
+trocavolta _ _ r trocaini
+trocavolta 1 1 l trocavolta
+
+trocavolta2 _ _ r dmkt
+trocavolta2 ¹ ¹ l trocavolta
+trocavolta2 ⁰ ⁰ * trocavolta
+
+;Desmarca todos os números para fazer a subtração
+
+dmk ¹ 1 l dmk
+dmk 1 1 l dmk
+dmk 0 0 l dmk
+dmk ⁰ 0 l dmk
+dmk _ _ r sub
+
+
+dmkt ¹ 1 r dmkt
+dmkt 1 1 r dmkt
+dmkt 0 0 r dmkt
+dmkt ⁰ 0 r dmkt
+dmkt _ _ l sub2
+
+;Faz a subtração caso não haja troca
+
+sub 0 0 r sub
+sub 1 ¹ l subA
+sub ¹ ¹ r sub
+sub _ _ l reset
+
+subA 0 0 l subA
+subA _ _ r subB
+subA ¹ ¹ l subA
+
+subB 0 _ r sub
+
+;Desmarca tudo depois da subtração
+
+reset ¹ 1 l reset
+reset 0 0 l reset
+reset _ _ r 0
+
+;Faz a subtração caso tenha sido feito a troca
+
+sub2 0 ⁰ l sub2a
+sub2 1 1 r sub2
+sub2 ⁰ ⁰ r sub2
+sub2 _ _ l resetT
+
+sub2a 0 0 l sub2a
+sub2a ⁰ ⁰ l sub2a
+sub2a 1 1 l sub2a
+sub2a _ _ r sub2b
+
+sub2b 1 _ r sub2
+
+;Reseta o padrão de entrada (x -> 0, y -> 1)
+
+resetT ⁰ 1 l resetT
+resetT 0 1 l resetT
+resetT ¹ 0 l resetT
+resetT 1 0 l resetT
+resetT _ _ r 0
