@@ -14,7 +14,7 @@ void opcoes(char str[], char opc){
 
         case 'b':
             printf("Digite outra string: ");
-            scanf(" %s", str2);
+            getchar();
             fgets(str2,20,stdin);
             str2 [strcspn(str2, "\n")] = '\0';
             puts("");
@@ -31,13 +31,15 @@ void opcoes(char str[], char opc){
 
         case 'c':
             printf("Digite outra string: ");
-            scanf(" %s", str2);
+            getchar();
+            fgets(str2,20,stdin);
+            str2 [strcspn(str2, "\n")] = '\0';
             
-            str3[20] = str[20];
+            strcpy(str,str3);
             strcat(str,str2);
 
             printf("S1 e S2 concatenadas: %s\n", str);
-            str[20] = str3[20];
+            strcpy(str3,str);
             break;
 
         case 'd':
@@ -117,6 +119,7 @@ char menu(char str[]){
 void main(){
     char str[20];
     printf("Digite uma string de no max 20 caracteres: ");
+    getchar();
     fgets(str,20,stdin);
     str [strcspn(str, "\n")] = '\0';
 
