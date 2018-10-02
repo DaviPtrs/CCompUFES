@@ -3,7 +3,7 @@
 #include <string.h>
 
 void opcoes(char str[], char opc){
-    char str2[20], str3[20], letra;
+    char str2[20], str3[20], c1, c2;
     int comp, posIni, tamanho;
     int cont = 0;
 
@@ -15,7 +15,10 @@ void opcoes(char str[], char opc){
         case 'b':
             printf("Digite outra string: ");
             scanf(" %s", str2);
+            fgets(str2,20,stdin);
+            str2 [strcspn(str2, "\n")] = '\0';
             puts("");
+
             comp = strcmp(str, str2);
             if (comp < 0){
                 printf("S1 é menor que S2\n");
@@ -47,30 +50,45 @@ void opcoes(char str[], char opc){
 
         case 'e':
             printf("Digite um caractere: ");
-            scanf(" %c", &letra);
+            scanf(" %c", &c1);
             for(int i = 0; i<strlen(str); i++){
-                if (str[i] == letra){
+                if (str[i] == c1){
                     cont++;
                 }
             }
 
-            printf("O caractere %c aparece na string %d vezes!\n", letra, cont);
+            printf("O caractere %c aparece na string %d vezes!\n", c1, cont);
             break;
 
         case 'f':
             printf("Digite a posição inicial e o tamanho: ");
-            scanf("%d %d", posIni, tamanho);
+            scanf("%d %d", &posIni, &tamanho);
             if ((posIni+tamanho) > (strlen(str))){
                 printf("Tamanho excedido!\n");
             }else{
-                for(int i = posIni, c = 0; c<tamanho; i++, c++){
+                for(int i = posIni; i<(tamanho+posIni); i++){
                     printf("%c", str[i]);
                 }
                 puts("");
             }
             break;
+        
+        case 'g':
+            printf("Digite dois caracteres (o primeiro será substituido pelo segundo): ");
+            scanf(" %c %c", &c1, &c2);
+            for(int i = 0; i<(strlen(str)); i++){
+                if (str[i] == c1){
+                    str[i] = c2;
+                    break;
+                }else if (i == (strlen(str)-1)){
+                    printf("O caractere %c não foi encontrado na string\n", c1);
+                }
+            }
+            printf("A string virou: %s\n", str);
             
+            break;
         case 'h':
+            puts("Saindo...\n");
             break;
         default:
             printf("OPÇÃO INVÁLIDA!\n");
@@ -99,12 +117,10 @@ char menu(char str[]){
 void main(){
     char str[20];
     printf("Digite uma string de no max 20 caracteres: ");
-    scanf(" %s", str);
-    while (menu(str) != 'h'){
+    fgets(str,20,stdin);
+    str [strcspn(str, "\n")] = '\0';
 
+    while (menu(str) != 'h'){
     }
 
-    
 }
-
-    

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int isVogal(char letra, int n){
+int isVogal(char letra){
     if ((letra == 'a') || (letra == 'e') || (letra == 'i') 
         || (letra == 'o') || (letra == 'u')){
             return 1;
@@ -21,7 +21,7 @@ int limiteStr(char str[]){
 int contVogal(char str[]){
     int cont = 0;
     for(int n = 0; n<limiteStr(str); n++){
-        if (isVogal(str[n], n))
+        if (isVogal(str[n]))
             cont ++;
         
     }
@@ -30,7 +30,7 @@ int contVogal(char str[]){
 
 void substVogal(char str[], char letra){
     for (int i = 0; i<limiteStr(str); i++){
-        if (isVogal(str[i], i))
+        if (isVogal(str[i]))
             printf("%c", letra);
         else
             printf("%c", str[i]);
