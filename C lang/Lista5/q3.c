@@ -20,10 +20,6 @@ void main(){ //  'Z' = 90 // 'A' 65 // (('A'-2)+26)
     }
     plain[(strlen(hash))] = '\0';
 
-    printf("Plain Text: ");
-    for(int i = 0; i<(strlen(plain)); i++){
-        printf("%c", plain[i]);
-    }
-    puts("");
+    printf("Plain Text: %s\n", plain);
 
 }
