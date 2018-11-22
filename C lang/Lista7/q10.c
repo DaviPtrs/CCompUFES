@@ -16,5 +16,7 @@ int main(){
     }
     puts("");
 
+    free(array);
+
     return 0;
 }
