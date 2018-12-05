@@ -1,27 +1,21 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void preencheMatriz(int **matriz, int n ,int m){
-    int num;
+int procuraNome(char **lista, int sz, char *nome){
+    int linha = -1;
+    char *str;
 
-    for(int i = 0; i<n; i++){
-        for(int j = 0; j<m; j++){
-            printf("Linha %d Coluna %d: ", i+1, j+1);
-            scanf("%d", &num);
-            matriz[i][j] = num;
-        }
+    for(int i = 0; i < sz; i++){
+        str = lista[i];
+        if(strcmp(nome, str) == 0)
+            linha = i;
     }
+    free(str);
+
+    return linha;
 }
 
-void printaMatriz(int **matriz, int n ,int m){
-    for(int i = 0; i<n; i++){
-        for(int j = 0; j<m; j++){
-            printf("%d ", matriz[i][j]);
-        }
-        puts("");
-    }
-}
 
 void main(){
     int nomesQtd;
@@ -33,7 +27,7 @@ void main(){
     nomes = (char **) malloc(nomesQtd * sizeof(char *));
 
     for(int i = 0; i<nomesQtd; i++){
-        nomes[i] = (char *) malloc(31 * sizeof(char));
+        nomes[i] = (char *) malloc(30 * sizeof(char));
     }
 
     while (1){
@@ -61,15 +55,87 @@ void main(){
                 printf("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!\n");
             }
         }
-        if(opc == 'f'){
-            sair = 1;
+        int linha;
+        char nome[30];
+        switch (opc){
+            case 'a':
+                printf("Informe a linha: ");
+                scanf("%d", &linha);
+                linha--;
+
+                printf("Nome: ");
+                getchar();            
+
+                fgets(nomes[linha], 30, stdin);
+                strtok(nomes[linha], "\n");
+
+                printf("Nome gravado com sucesso!\n");
+                break;
+
+            case 'b':
+                printf("Informe a linha: ");
+                scanf("%d", &linha);
+                linha--;
+
+                nomes[linha] = "";
+                printf("Nome apagado!\n");
+                break;
+
+            case 'c':
+                printf("Informe um nome: ");
+                getchar();
+                fgets(nome, 30, stdin);
+                strtok(nome, "\n");
+
+                linha = procuraNome(nomes, nomesQtd, nome);
+                if(linha == -1){
+                    printf("Esse nome não existe na lista!\n");
+                    break;
+                }
+
+                printf("Novo nome: ");
+                getchar();            
+
+                fgets(nomes[linha], 30, stdin);
+                strtok(nomes[linha], "\n");
+
+                printf("Nome substituido com sucesso!\n");
+                break;
+
+            case 'd':
+                printf("Informe um nome: ");
+                getchar();
+                fgets(nome, 30, stdin);
+                strtok(nome, "\n");
+
+                linha = procuraNome(nomes, nomesQtd, nome);
+                if(linha == -1){
+                    printf("Esse nome não existe na lista!\n");
+                    break;
+                }
+                nomes[linha] = "";
+                printf("Nome apagado!\n");
+                
+                break;
+            case 'e':
+                printf("Informe a linha: ");
+                scanf("%d", &linha);
+                linha--;
+
+                printf("Nome: %s\n", nomes[linha]);
+                break;
+            case 'f':
+                sair = 1;        
         }
 
         if(sair == 1){
             break;
         }
 
-        // switch(opc)
+    puts("\n");
+        
     }
+
+    free(nomes);
 
 }
