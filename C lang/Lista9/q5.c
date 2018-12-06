@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float *ReallocDesbugado(float *vet, int tamanhoA, int tamanhoF){
+float *ReallocDesbugado(float *vet, int tamanhoA, int tamanhoF){ //Continua bugado, realloc n presta
     float *newVet;
     newVet = malloc(tamanhoF * sizeof(float));
 
@@ -15,7 +15,7 @@ float *ReallocDesbugado(float *vet, int tamanhoA, int tamanhoF){
 
 
 void main(){
-    FILE *fileTemps = fopen("/home/dspetris/Downloads/lista9/questao5.txt", "r");
+    FILE *fileTemps = fopen("questao5.txt", "r");
     float *temps;
     int tamanho;
 
