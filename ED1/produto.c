@@ -12,11 +12,11 @@ tListaProduto criaListaProdutos(){
 
 int insere(tProduto produto, tListaProduto *lista){
     if(lista->Ultima > MAXTAM){
-        // printf("A lista está cheia!\n");
-        return 0; //Retorna 0 se a lista estiver cheia
-    // }else if (existeProduto(lista, produto.codigo) < 0){ // ESSE ELSE IF TA BUGANDO
-    //     // printf("Código já existente!\n");
-    //     return 0;
+        printf("A lista está cheia!\n");
+        return 0; //Retorna 0 se o elemento não foi adicionado
+    }else if (existeProduto(lista, produto.codigo) != -1){ // ESSE ELSE IF TA BUGANDO
+        printf("Código já existente!\n");
+        return 0;
     }else{
         lista->produtos[lista->Ultima] = produto;
         lista->Ultima++;
@@ -37,17 +37,25 @@ void shiftR(tListaProduto *lista, int p){
     }
 }
 
+int checaEstoquePos(int p, tListaProduto *lista){
+    return lista->produtos[p].qtd;
+}
+
+
 int retira(int codigo, tListaProduto *lista){
     if(vazia(lista)){
         printf("A lista está vazia!\n");
         return 0; //Retorna 0 se o item não foi retirado
     }else{
-        int verificador = existeProduto(lista, codigo);
-        if(verificador < 0){
-            printf("Produto não existe");
+        int flag = existeProduto(lista, codigo);
+        if(flag < 0){
+            printf("Produto não existe!\n");
+            return 0;
+        }else if(checaEstoquePos(flag, lista) != 0){
+            printf("Produto em estoque não pode ser removido!\n");
             return 0;
         }else{
-            shiftR(lista, verificador+1);
+            shiftR(lista, flag+1);
             lista->Ultima--;
         }
     }
@@ -61,26 +69,22 @@ int quantidade(tListaProduto *lista){
 }
 
 int existeProduto(tListaProduto *lista, int codigo){
-    if(vazia(lista)){
-        printf("A lista está vazia!\n");
-        return -1;
-    }else{
+    if(!vazia(lista)){
         for(int i = 0; i<quantidade(lista); i++){
             if(lista->produtos[i].codigo == codigo)
                 return i;
         }
-        printf("Produto não existe!\n");
-        return -1;
     }
+    return -1;
 }
 
 tProduto buscaCodigo(tListaProduto *lista, int codigo){
-    int verificador = existeProduto(lista, codigo);
-    if(verificador < 0){
-        printf("Produto não existe");
+    int flag = existeProduto(lista, codigo);
+    if(flag < 0){
+        printf("Produto não existe!\n");
         return;
     }else
-        return lista->produtos[verificador];
+        return lista->produtos[flag];
     
 }
 
@@ -100,36 +104,4 @@ tProduto maisBarato(tListaProduto *lista){
         }
         return cheaper;
     }
-}
-
-
-void main(){
-    tListaProduto teste;
-    teste = criaListaProdutos();
-
-    // if(vazia(&teste)) printf("A lista está vazia\n");
-
-    tProduto carro;
-    carro.codigo = 1;
-    sprintf(carro.nome, "Nissan Skyline R34");
-    carro.preco = 15000;
-    carro.qtd = 1;
-
-    insere(carro, &teste);
-    // printf("Adicionando produto\n");
-    // insere(carro, &teste);
-
-    // retira(1, &teste);
-    // printf("Removendo\n");
-
-    // if(!vazia(&teste)) printf("A lista não está vazia\n");
-    // else printf("A lista está vazia\n");
-
-
-    // printf("Quantidade = %d\n", quantidade(&teste));
-
-    // tProduto produto = maisBarato(&teste);
-    // printf("%s", produto.nome);
-
-
 }
