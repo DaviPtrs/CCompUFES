@@ -19,8 +19,8 @@ int main(){
     // criando alguns alunos apenas para testar (mais adequado seria carregar de um arquivo)
 	printf("1");
     Cliente* maria = cria_cliente("maria", 1);
-    // Cliente* sofia = cria_cliente("sofia", 2);
-    // Cliente* jose = cria_cliente("jose", 3);
+    Cliente* sofia = cria_cliente("sofia", 2);
+    Cliente* jose = cria_cliente("jose", 3);
 
 	// printf("2");
     // Movel* carro_sofia = cria_movel (2784, 2011, 25000);

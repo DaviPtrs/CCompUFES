@@ -54,6 +54,7 @@ struct listahet{
 	Cliente* dono;
 	void* item;
 	ListaHet* Prox;
+  int tipo;
 };
 
 /*Cria lista vazia
