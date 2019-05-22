@@ -105,3 +105,10 @@ tProduto maisBarato(tListaProduto *lista){
         return cheaper;
     }
 }
+
+int main(int argc, char **argv) {
+	printf("oi");
+
+	return 0;
+}
+
