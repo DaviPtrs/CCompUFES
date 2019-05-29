@@ -25,4 +25,6 @@ int push(tPilha *energizer);
 
 int pop(tPilha *duracel);
 
+void printPilha(tPilha *litio);
+
 #endif /* PILHA_H_ */
