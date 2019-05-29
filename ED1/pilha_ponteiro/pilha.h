@@ -1,5 +1,6 @@
 #ifndef PILHA_H_
 #define PILHA_H_
+#define MAXTAM 50
 
 typedef struct celulaPilha celulaPilha;
 
@@ -13,18 +14,20 @@ typedef struct{
 	celulaPilha *Topo;
 } tPilha;
 
-celulaPilha *criaCelula(int n);
+celulaPilha *criaCelula(int);
 
 tPilha *criaPilha();
 
-int pilhaVazia(tPilha *moura);
+int pilhaVazia(tPilha *);
 
 void liberaPilha(tPilha *);
 
-int push(tPilha *energizer);
+void liberaCelula(celulaPilha *);
 
-int pop(tPilha *duracel);
+void push(tPilha *, celulaPilha *);
 
-void printPilha(tPilha *litio);
+celulaPilha *pop(tPilha *);
+
+void printPilha(tPilha *);
 
 #endif /* PILHA_H_ */
