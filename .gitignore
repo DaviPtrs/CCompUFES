@@ -7,3 +7,6 @@
 *.pdf
 .project
 /ED1/.vscode
+ED1/relatorio_ed_lab/output/*
+*.bin
+*.ipch
