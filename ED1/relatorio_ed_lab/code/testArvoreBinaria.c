@@ -33,7 +33,7 @@ int main(int argc, char *argv[ ]){
    }
     t = clock() - t; 
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds 
-    emOrdem_ArvBin(raiz);
+    // emOrdem_ArvBin(raiz);
     
 
     printf("%f", time_taken);
