@@ -11,13 +11,13 @@ OBJAVL = testeArvoreAVL.o ArvoreAVL.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 
-DesempenhoLista: $(OBJLISTA)
+DesempenhoLista: $(OBJLISTA) clean
 	$(CC) -o $@ $^ $(CFLAGS)
 
-DesempenhoArvore: $(OBJARV)
+DesempenhoArvore: $(OBJARV) clean
 	$(CC) -o $@ $^ $(CFLAGS)
 
-DesempenhoAVL: $(OBJAVL)
+DesempenhoAVL: $(OBJAVL) clean
 	$(CC) -o $@ $^ $(CFLAGS)
 
 all: DesempenhoLista DesempenhoArvore DesempenhoAVL
