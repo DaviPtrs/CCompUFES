@@ -1,7 +1,7 @@
 from os import system
 import csv
 
-testFiles = ["AVL", "Arvore"]
+testFiles = ["AVL", "Arvore", "Lista"]
 typeFiles = ["rand", "seq"]
 tamFiles = [100, 1000, 10000, 100000, 200000, 300000, 400000, 500000, 700000,
             900000, 1000000, 2000000, 3000000]
@@ -13,7 +13,7 @@ for struct in testFiles:
         for tipo in typeFiles:
             for tam in tamFiles:
                 if (struct == "Arvore") and (tipo == "seq") and (tam > 100000):
-                    continue
+                    break
                 inputName = "input_{}_{}".format(tipo, tam)
                 fileName = "output/{}_{}_{}.csv".format(struct, inputName, num)
                 with open(fileName) as csvfile:

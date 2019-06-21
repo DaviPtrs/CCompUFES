@@ -1,7 +1,7 @@
 from os import system
 import csv
 
-testFiles = ["AVL", "Arvore"]
+testFiles = ["Arvore", "AVL", "Lista"]
 typeFiles = ["rand", "seq"]
 tamFiles = [100, 1000, 10000, 100000, 200000, 300000, 400000, 500000, 700000,
             900000, 1000000, 2000000, 3000000]
@@ -13,6 +13,8 @@ for struct in testFiles:
     for num in numBuscas:
         for tipo in typeFiles:
             for tam in tamFiles:
+                if (struct == "Arvore") and (tipo == "seq") and (tam > 100000):
+                    break
                 inputName = "input_{}_{}".format(tipo, tam)
                 fileName = "output/{}_{}_{}.csv".format(struct, inputName, num)
                 columns = "tempoInsert, qtdBuscas, tempoBusca"
@@ -25,8 +27,8 @@ for struct in testFiles:
                 for c in range(0,30):
                     system(cmd + " >> " + fileName)
 
-output = "output.csv"
-system("rm " + output)
-system("touch " + output)
-system("python3.6 medias.py > " + output)
+# output = "output.csv"
+# system("rm " + output)
+# system("touch " + output)
+# system("python3.6 medias.py > " + output)
                 
