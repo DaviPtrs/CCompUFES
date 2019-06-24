@@ -15,7 +15,7 @@ typedef struct fila Fila;
 struct fila{
 	int topo;
 	tFila *index;
-  tFila *fim;
+  	tFila *fim;
 };
 
 /*Cria uma fila vazia, usando pilha

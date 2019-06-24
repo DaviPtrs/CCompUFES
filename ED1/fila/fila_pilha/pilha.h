@@ -51,7 +51,7 @@ void push(Pessoa* pessoa, Pilha* pilha);
 */
 Pessoa* pop(Pilha* pilha);
 
-void destroi_pessoa(Pessoa* p)
+void destroi_pessoa(Pessoa* p);
 
 /*Libera a memoria ocupada pela pilha
 * inputs: a Pilha
