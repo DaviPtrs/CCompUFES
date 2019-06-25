@@ -5,7 +5,7 @@
 *********************************
 */
 #include <stdio.h>
-#include "fila_ponteiro/fila.h"
+#include "fila_pilha/fila.h"
 
 int main()
 {

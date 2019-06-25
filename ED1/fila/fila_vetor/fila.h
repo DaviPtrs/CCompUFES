@@ -1,18 +1,17 @@
 #ifndef FILA_H_
 #define FILA_H_
 #include "../fila_pilha/pilha.h"
-#define MAXTAM 10
 
 /*Tipo que define a fila (tipo opaco)
-  Estrutura interna do tipo deve ser definida na implementa��o do TAD. Usar como base o TAD Pilha (pilha.h) - n�o usar outra estrutura de dados
+  Estrutura interna do tipo deve ser definida na implementa��o do TAD.
   */
 typedef struct fila Fila;
 struct fila{
-	Pessoa* vet[MAXTAM];
-	int fim;
+	Pessoa* vet[MaxTam];
+	int ini, fim;
 };
 
-/*Cria uma fila vazia, usando pilha
+/*Cria uma fila vazia, usando vetor circular por arranjo
 * inputs: nenhum
 * output: fila alocada e vazia
 * pre-condicao: nao tem
@@ -49,8 +48,9 @@ void imprime_fila (Fila* f);
 * pre-condicao: fila n�o � nula
 * pos-condicao: nenhuma
 */
-int Vazia_fila (Fila* f);
+int fila_Vazia (Fila* f);
 
+int fila_Cheia (Fila* f);
 
 /*Separa a fila f de tal forma que as pessoas com idade maior que 60 sejam movidas para a fila "f_maiores" e as pessoas com idade menor que 60 para a fila "f_menores".
 * inputs: a fila de pessoas, as filas f_maiores e f_menores (inicialmente vazias)

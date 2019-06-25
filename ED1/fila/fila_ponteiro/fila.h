@@ -9,7 +9,7 @@ struct tfila{
 };
 
 /*Tipo que define a fila (tipo opaco)
-  Estrutura interna do tipo deve ser definida na implementa��o do TAD. Usar como base o TAD Pilha (pilha.h) - n�o usar outra estrutura de dados
+  Estrutura interna do tipo deve ser definida na implementa��o do TAD. 
   */
 typedef struct fila Fila;
 struct fila{
@@ -18,7 +18,7 @@ struct fila{
   	tFila *fim;
 };
 
-/*Cria uma fila vazia, usando pilha
+/*Cria uma fila vazia, usando lista encadeada
 * inputs: nenhum
 * output: fila alocada e vazia
 * pre-condicao: nao tem
