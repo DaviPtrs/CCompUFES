@@ -12,3 +12,4 @@
 ED1/relatorio_ed_lab/output/*
 *.bin
 *.ipch
+#*.pdf
