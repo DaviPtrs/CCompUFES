@@ -6,7 +6,7 @@ typedef struct NO NO;
 typedef NO* ArvBin;
 struct NO{
 	int fill;
-	ArvBin *Esq, *Dir;
+	NO *Esq, *Dir;
 };
 
 /**

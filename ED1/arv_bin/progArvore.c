@@ -11,7 +11,7 @@ int main(){
         insere_ArvBin(raiz,dados[i]);
  
     //Alterar o valor de p para testar valores que existem e não
-    int p = 36;
+    int p = 60;
     if (consulta_ArvBin(raiz, p))
 	printf("Achou o elemento %d\n",p);
     else
