@@ -1,0 +1,44 @@
+
+/*
+DAVI DE SOUZA PETRIS
+Implementacao Laboratorio 2
+Modificações: VM
+========================================================================== */
+#include <sys/time.h>
+#include "listaencadeada.h"
+
+/* ========================================================================== */
+
+int main(){
+	TipoLista lista;
+	Produto item;
+
+	FLVazia(&lista);	
+	
+	item = criaProduto(1,"Sabonete", 10, 3.90);
+	Insere(item, &lista);
+	item = criaProduto(2,"Arroz", 20, 13.90);
+	Insere(item, &lista);
+	item = criaProduto(3,"Feijao", 1, 17.90);
+	Insere(item, &lista);
+	item = criaProduto(4,"Tomate", 0, 10);
+	Insere(item, &lista);
+	item = criaProduto(5,"Uva", 5, 8);
+	Insere(item, &lista);
+	
+	Insere(item, &lista);
+
+	printf("\nTamanho da lista = %d\n", Quantidade(lista));
+	ImprimeLista(lista);
+	Retira(4, &lista, &item);
+	printf("\nTamanho da lista = %d\n", Quantidade(lista));
+	ImprimeLista(lista);
+	TipoApontador p = BuscaCodigo(4, &lista);
+	if(p!=NULL) ImprimeProduto(p->Item);
+	item = maisBarato(&lista);
+	ImprimeProduto(item);
+
+	LiberaLista(&lista);
+
+	return 0;
+}
